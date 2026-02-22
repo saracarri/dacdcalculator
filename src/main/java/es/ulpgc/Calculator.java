@@ -1,30 +1,47 @@
 package es.ulpgc;
 
 public class Calculator {
-    public double calculateSum(Operation operation, double a, double b) {
-        if (operation == Operation.ADD) {
-            return a + b;
+
+    public double add(String expression) {
+        if (!expression.contains("+")) {
+            throw new IllegalArgumentException("Incorrect operator for add");
         }
+        String[] parts = expression.split("\\+");
+        double a = Double.parseDouble(parts[0].trim());
+        double b = Double.parseDouble(parts[1].trim());
+        return a + b;
     }
 
-    public double calculateSubtraction(Operation operation, double a, double b) {
-        if (operation == Operation.SUBTRACT) {
-            return a - b;
+    public double subtract(String expression) {
+        if (!expression.contains("-")) {
+            throw new IllegalArgumentException("Incorrect operator for subtract");
         }
+        String[] parts = expression.split("-");
+        double a = Double.parseDouble(parts[0].trim());
+        double b = Double.parseDouble(parts[1].trim());
+        return a - b;
     }
 
-    public double calculateMultiplication(Operation operation, double a, double b) {
-        if (operation == Operation.MULTIPLY) {
-            return a * b;
+    public double multiply(String expression) {
+        if (!expression.contains("*")) {
+            throw new IllegalArgumentException("Incorrect operator for multiply");
         }
+        String[] parts = expression.split("\\*");
+        double a = Double.parseDouble(parts[0].trim());
+        double b = Double.parseDouble(parts[1].trim());
+        return a * b;
     }
 
-    public double calculateDivision(Operation operation, double a, double b) {
-        if (operation == Operation.DIVIDE) {
-            if (b != 0) {
-                return a / b;
-            } else {
-                throw new IllegalArgumentException("Cannot divide by zero");
-            }
+    public double divide(String expression) {
+        if (!expression.contains("/")) {
+            throw new IllegalArgumentException("Incorrect operator for divide");
+        }
+        String[] parts = expression.split("/");
+        double a = Double.parseDouble(parts[0].trim());
+        double b = Double.parseDouble(parts[1].trim());
+        if (b == 0) {
+            throw new IllegalArgumentException("Cannot divide by zero");
+        }
+        return a / b;
     }
 }
