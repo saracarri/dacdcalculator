@@ -32,4 +32,9 @@ public class CalculatorTest {
         Assert.assertEquals(3, result, 0.1);
     }
 
+    @Test(expected = IllegalArgumentException.class)
+    public void should_throw_exception() {
+        Calculator calculator = new Calculator();
+        calculator.divide("6/0");
+    }
 }
